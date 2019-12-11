@@ -71,7 +71,8 @@ class BCW_Explorer:
                         )
                     ],
                     axis=1,
-                    keys=summaries
+                    keys=summaries,
+                    names=['summaries', 'attributes']
                 )
 
             multilevel['label'] = labels
@@ -83,4 +84,4 @@ class BCW_Explorer:
 # st.title('Elogroup - Data Scientist Applicant')
 # st.header('Case: Breast Cancer Wisconsin EDA')
 # eda = BCW_Explorer()
-# st.write()
+# st.bar_chart(eda.data.xs('mean', level='summaries', axis=0))
