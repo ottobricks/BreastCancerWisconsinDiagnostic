@@ -3,3 +3,4 @@
 data/
 docs/
 src/__pycache__/
+notebooks/.ipynb_checkpoints/
