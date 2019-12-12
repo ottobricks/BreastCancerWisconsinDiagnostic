@@ -1,15 +1,15 @@
-import streamlit as st
+# import numpy as np
 import pandas as pd
+# from matplotlib import pyplot as plt
 
 
 class BCW_Explorer:
     '''
     Class to explore the dataset
     '''
-    def __init__(self, nrows=100):
+    def __init__(self, nrows=None):
         '''
         '''
-        # @st.cache
         def load_data() -> None:
             # defines header for the dataframe following the documentation
             # header =\
@@ -79,9 +79,3 @@ class BCW_Explorer:
             return multilevel
 
         self.data = load_data()
-
-
-# st.title('Elogroup - Data Scientist Applicant')
-# st.header('Case: Breast Cancer Wisconsin EDA')
-# eda = BCW_Explorer()
-# st.bar_chart(eda.data.xs('mean', level='summaries', axis=0))
