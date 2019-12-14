@@ -1,6 +1,6 @@
-# import numpy as np
+import sys
 import pandas as pd
-# from matplotlib import pyplot as plt
+sys.path.append('/home/ottok92/Dev/elogroup2/')
 
 
 class BCW_Explorer:
@@ -28,7 +28,7 @@ class BCW_Explorer:
 
             try:
                 data = pd.read_csv(
-                    'data/raw/wdbc.data',
+                    '../data/raw/wdbc.data',
                     header=None,
                     # names=pd.np.array(header),
                     nrows=nrows
@@ -44,7 +44,7 @@ class BCW_Explorer:
             labels = data[1].map({'M': 1, 'B': 0}).astype('Int8')
 
             # enforcing multi-level index
-            summaries = ['mean', 'std', 'mean_max3']
+            summaries = ['mean', 'std', 'meanmax3']
             multilevel =\
                 pd.concat(
                     [
