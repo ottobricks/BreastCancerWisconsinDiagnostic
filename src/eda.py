@@ -57,7 +57,7 @@ class BCW_Explorer:
                                     cols,
                                     [
                                         'radius', 'texture',
-                                        'perimiter', 'area',
+                                        'perimeter', 'area',
                                         'smoothness', 'compactness',
                                         'concavity_intensity',
                                         'concavity_count',
