@@ -41,7 +41,7 @@ class BCW_Explorer:
             data = data.drop(0, axis=1)
 
             # transform labels into binary
-            labels = data[1].map({'M': 1, 'B': 0}).astype('Int8')
+            labels = data[1].map({'M': 1, 'B': 0}).astype('int')
 
             # enforcing multi-level index
             summaries = ['mean', 'std', 'meanmax3']
