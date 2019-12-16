@@ -11,21 +11,6 @@ class BCW_Explorer:
         '''
         '''
         def load_data() -> None:
-            # defines header for the dataframe following the documentation
-            # header =\
-            #     ['id', 'label'] +\
-            #     [
-            #         '{0}_{1}'.format(attribute, summary)
-            #         for summary in ['mean', 'std', 'mean_3max']
-            #         for attribute in [
-            #             'radius', 'texture',
-            #             'circumference', 'area',
-            #             'smoothness', 'density',
-            #             'concavity_intensity', 'concavity_count',
-            #             'symmetry', 'fractal_dimension'
-            #         ]
-            #     ]
-
             try:
                 data = pd.read_csv(
                     '../data/raw/wdbc.data',
@@ -78,4 +63,6 @@ class BCW_Explorer:
             multilevel['label'] = labels
             return multilevel
 
-        self.data = load_data()
+        data = load_data()
+        self.holdout = data.sample(frac=.2)
+        self.data = data[~data.index.isin(self.holdout.index)]
