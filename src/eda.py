@@ -1,7 +1,6 @@
-import sys
+import os
 import pandas as pd
-sys.path.append('/home/ottok92/Dev/elogroup2/')
-
+from .drive_api_download import download_data
 
 class BCW_Explorer:
     '''
@@ -10,10 +9,14 @@ class BCW_Explorer:
     def __init__(self, nrows=None):
         '''
         '''
+        def get_data() -> bool:
+            os.system("mkdir -p ../data")
+            return download_data("1SOIlZxCtx2VRmVj7MycqCqpncJU6NgmSQ6kq4Ie20fk", "../data/wbcd.csv")
+            
         def load_data() -> None:
             try:
                 data = pd.read_csv(
-                    '../data/raw/wdbc.data',
+                    'data/wbcd.csv',
                     header=None,
                     # names=pd.np.array(header),
                     nrows=nrows
@@ -63,6 +66,9 @@ class BCW_Explorer:
             multilevel['label'] = labels
             return multilevel
 
-        data = load_data()
-        self.holdout = data.sample(frac=.2)
-        self.data = data[~data.index.isin(self.holdout.index)]
+        if get_data():
+            data = load_data()
+            self.holdout = data.sample(frac=.2)
+            self.data = data[~data.index.isin(self.holdout.index)]
+        else:
+            raise Exception("Could not download dataset")
