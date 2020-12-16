@@ -10,8 +10,8 @@ class BCW_Explorer:
         '''
         '''
         def get_data() -> bool:
-            os.system("mkdir -p ../data")
-            return download_data("1SOIlZxCtx2VRmVj7MycqCqpncJU6NgmSQ6kq4Ie20fk", "../data/wbcd.csv")
+            os.system("mkdir -p ./data")
+            return download_data("1SOIlZxCtx2VRmVj7MycqCqpncJU6NgmSQ6kq4Ie20fk", "data/wbcd.csv")
             
         def load_data() -> None:
             try:
@@ -26,17 +26,17 @@ class BCW_Explorer:
                 print('Error while loading data: {0}'.format(e))
 
             # drops unnecessary id column
-            data = data.drop(0, axis=1)
+            data = data.drop("id", axis=1)
 
             # transform labels into binary
-            labels = data[1].map({'M': 1, 'B': 0}).astype('int')
+            labels = data["diagnosis"].map({'M': 1, 'B': 0}).astype('int')
 
             # enforcing multi-level index
             summaries = ['mean', 'std', 'meanmax3']
             multilevel =\
                 pd.concat(
                     [
-                        data[cols]
+                        data.iloc[:, cols]
                         .rename(
                             columns={
                                 x: attribute
@@ -55,7 +55,7 @@ class BCW_Explorer:
                             }
                         )
                         for cols in pd.np.array_split(
-                            range(2, 32), len(summaries)
+                            range(1, len(data.columns)), len(summaries)
                         )
                     ],
                     axis=1,

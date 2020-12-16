@@ -43,7 +43,7 @@ def download_data(file_id, output):
     service = build("drive", "v3", credentials=creds)
 
     # Downloads file
-    request = service.files().get_media(fileId=file_id)
+    request = service.files().export_media(fileId=file_id, mimeType="text/csv")
     fp = open(output, "wb")
     downloader = MediaIoBaseDownload(fp, request)
     done = False
@@ -51,6 +51,7 @@ def download_data(file_id, output):
         status, done = downloader.next_chunk(num_retries=3)
         print("Download %d%%." % int(status.progress() * 100))
         
+    fp.close()
     return done
 
 
