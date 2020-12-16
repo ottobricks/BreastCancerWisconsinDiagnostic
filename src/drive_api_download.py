@@ -11,7 +11,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 SCOPES = ["https://www.googleapis.com/auth/drive.readonly"]
 
 
-def _main(file_id, output):
+def download_data(file_id, output):
     """Shows basic usage of the Drive v3 API.
     Prints the names and ids of the first 10 files the user has access to.
     """
@@ -58,4 +58,4 @@ if __name__ == "__main__":
     parser.add_argument("-o", "--output")
     args = parser.parse_args()
 
-    _main(args.file_id, args.output)
+    download_data(args.file_id, args.output)
