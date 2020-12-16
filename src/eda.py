@@ -11,7 +11,10 @@ class BCW_Explorer:
         '''
         def get_data() -> bool:
             os.system("mkdir -p ./data")
-            return download_data("1SOIlZxCtx2VRmVj7MycqCqpncJU6NgmSQ6kq4Ie20fk", "data/wbcd.csv")
+            if "wbcd.csv" in os.listdir("data/"):
+                return True
+            else:
+                return download_data("1SOIlZxCtx2VRmVj7MycqCqpncJU6NgmSQ6kq4Ie20fk", "data/wbcd.csv")
             
         def load_data() -> None:
             try:
