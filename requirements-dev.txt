@@ -21,6 +21,9 @@ entrypoints==0.3
 enum-compat==0.0.3
 flake8==3.7.9
 future==0.18.2
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
 idna==2.8
 imbalanced-learn==0.6.1
 imblearn==0.0
