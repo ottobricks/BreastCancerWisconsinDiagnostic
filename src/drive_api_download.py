@@ -50,6 +50,8 @@ def download_data(file_id, output):
     while done is False:
         status, done = downloader.next_chunk(num_retries=3)
         print("Download %d%%." % int(status.progress() * 100))
+        
+    return done
 
 
 if __name__ == "__main__":
