@@ -17,7 +17,7 @@ class BCW_Explorer:
             try:
                 data = pd.read_csv(
                     'data/wbcd.csv',
-                    header=None,
+                    header=0,
                     # names=pd.np.array(header),
                     nrows=nrows
                 )
