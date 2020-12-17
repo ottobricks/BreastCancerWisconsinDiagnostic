@@ -7,10 +7,6 @@ HOWEVER, If you want to run the experiment without downloading the repo to your 
 ---
 
 <h1><center>Classification Task: Breast Cancer Wisconsin Diagnostics Dataset</center></h1><br />
-<h2>Otto von Sperling<h2/>
-<h3>December 16th, 2019 <h3/><br />
-<h2><center>Data Scientist Application</center></h2>
-
 
 ```python
 import os
